@@ -3,10 +3,11 @@ package ru.gb;
 public class Cat {
 
     private String name;
-    private int appetite;
-    private volatile boolean satiety = false;
+    private volatile int appetite;
+    private volatile int satiety;
 
     public Cat(String name, int appetite) {
+        
         this.name = name;
         this.appetite = appetite;
 //        satiety = false;
@@ -14,10 +15,11 @@ public class Cat {
 
         Thread backgroundSatietyManagement = new Thread(() -> {
             while (true){
-                satiety = false;
+                satiety++;
                 try {
                     Thread.sleep(5 * 1000L);
-                } catch (InterruptedException e) {
+                } 
+                catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -27,13 +29,13 @@ public class Cat {
     }
 
     public void eat(Plate plate) {
-        if (!satiety) {
-            satiety = plate.decreaseFood(appetite);
+        if (satiety > 0) {
+            plate.decreaseFood(appetite);
         }
     }
 
     public void makeHungry() {
-        satiety = false;
+        satiety++;
     }
 
     @Override
