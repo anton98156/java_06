@@ -6,20 +6,14 @@ public class Cat {
     private int appetite;
     private volatile boolean satiety = false;
 
-    public Cat(String name) {
-        this(name, 10);
-//        this.name = name;
-//        this.appetite = 10;
-//        satiety = false;
-    }
-
     public Cat(String name, int appetite) {
         this.name = name;
         this.appetite = appetite;
 //        satiety = false;
+        // boolean em = is
 
         Thread backgroundSatietyManagement = new Thread(() -> {
-            while (true) {
+            while (true){
                 satiety = false;
                 try {
                     Thread.sleep(5 * 1000L);

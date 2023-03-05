@@ -17,6 +17,15 @@ public class Plate {
         return false;
     }
 
+    public boolean isEmpty (int food) {
+        if (food > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return "Plate[" + food + "]";

@@ -13,24 +13,32 @@ public class Main {
         // В конце каждого цикла мы досыпаем в тарелку еду.
         // Для досыпания еды сделать метод increaseFood в классе Plate.
         // 2. Поменять поле satiety у кота с boolean на int.
-        // Допустим у кота апптит 10, сытность 3. Значит кот захочет поесть 7 единиц.
+        // Допустим у кота аппетит 10, сытность 3. Значит кот захочет поесть 7 единиц.
         // 3. * Доработать поток thread в классе Cat, чтобы он каждую секунду уменьшал сытость кота на 1.
 
         Cat murzik = new Cat("Murzik", 15);
-        Cat barsik = new Cat("Barsik"); // appetite = 10
+        Cat barsik = new Cat("Barsik", 10);
+        Cat oliver = new Cat("Oliver", 8);
+        Cat garfield = new Cat("Garfield", 22);
 
         Plate plate = new Plate(200);
 
 //        while (true) {
             murzik.makeHungry();
             barsik.makeHungry();
+            oliver.makeHungry();
+            garfield.makeHungry();
 
             murzik.eat(plate);
             barsik.eat(plate);
+            oliver.eat(plate);
+            garfield.eat(plate);
 
             System.out.println(plate);
             System.out.println(murzik);
             System.out.println(barsik);
+            System.out.println(oliver);
+            System.out.println(garfield);
 
             Thread.sleep(1000);
 //        }
