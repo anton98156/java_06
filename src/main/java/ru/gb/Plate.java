@@ -8,6 +8,12 @@ public class Plate {
         this.food = food;
     }
 
+    public void increaseFood(Plate plate) {
+        if (food > 0) {
+            food = food + 10;
+        }
+    }
+
     public boolean decreaseFood(int foodToDecrease) {
         if (food >= foodToDecrease) {
             food = food - foodToDecrease;
@@ -18,12 +24,12 @@ public class Plate {
         }
     }
 
-    public boolean isEmpty (int food) {
-        if (food > 0) {
-            return true;
+    public boolean isEmpty (Plate plate) {
+        if (food > 10) {
+            return false;
         }
         else {
-            return false;
+            return true;
         }
     }
 

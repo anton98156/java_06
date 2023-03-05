@@ -1,7 +1,7 @@
+
+
 // ДЗ:
-// Кот (имя, аппетит, сытность)
-// Тарелка (содержит какое-то количество еды)
-// Кот ест из тарлеки. Если в тарелке недостаточно еды - кот ее не трогает
+
 // while (true) -> while (!plate.isEmpty())
 // 1. Создать массив котов. Пусть все коты из массива по очереди едят из одной тарелки.
 // В конце каждого цикла мы досыпаем в тарелку еду.
@@ -12,39 +12,46 @@
 
 package ru.gb;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         
-        Cat murzik = new Cat("Murzik", 15);
+        Cat murzik = new Cat("Murzik", 12);
         Cat barsik = new Cat("Barsik", 10);
         Cat oliver = new Cat("Oliver", 8);
         Cat garfield = new Cat("Garfield", 22);
+        
+        ArrayList<Cat> cats = new ArrayList<Cat>(3);
+        cats.add(murzik);
+        cats.add(barsik);
+        cats.add(oliver);
+        cats.add(garfield);
 
         Plate plate = new Plate(300);
 
-        // Добавить условие, что если все подошли, но никто не поел, то тоже надо завершать цикл, 
-        // потому что они могут хотеть больше, чем в тарелке
-
-       while (true) {
-
-            murzik.makeHungry();
-            barsik.makeHungry();
-            oliver.makeHungry();
-            garfield.makeHungry();
-
-            murzik.eat(plate);
-            barsik.eat(plate);
-            oliver.eat(plate);
-            garfield.eat(plate);
+        while (!plate.isEmpty(plate)) {
+    
+            cats.get(0).makeHungry();
+            cats.get(1).makeHungry();
+            cats.get(2).makeHungry();
+            cats.get(3).makeHungry();
+            
+            cats.get(0).eat(plate);
+            cats.get(1).eat(plate);
+            cats.get(2).eat(plate);
+            cats.get(3).eat(plate);
 
             System.out.println(plate);
-            System.out.println(murzik);
-            System.out.println(barsik);
-            System.out.println(oliver);
-            System.out.println(garfield);
-
-            Thread.sleep(750);
-       }
+            System.out.println(cats.get(0));
+            System.out.println(cats.get(1));
+            System.out.println(cats.get(2));
+            System.out.println(cats.get(3));
+            
+            Thread.sleep(500);
+            
+            plate.increaseFood(plate);
+        }      
     }
 }

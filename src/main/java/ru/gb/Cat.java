@@ -10,14 +10,12 @@ public class Cat {
         
         this.name = name;
         this.appetite = appetite;
-//        satiety = false;
-        // boolean em = is
 
         Thread backgroundSatietyManagement = new Thread(() -> {
             while (true){
-                satiety++;
+                satiety--;
                 try {
-                    Thread.sleep(5 * 1000L);
+                    Thread.sleep(1000);
                 } 
                 catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -30,7 +28,7 @@ public class Cat {
 
     public void eat(Plate plate) {
         if (satiety > 0) {
-            plate.decreaseFood(appetite);
+            plate.decreaseFood(appetite - satiety);
         }
     }
 
